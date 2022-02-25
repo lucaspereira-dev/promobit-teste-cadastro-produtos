@@ -35,11 +35,8 @@
         </button>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="{{ route('login') }}">Sign out</a>
+                <a class="nav-link px-3" href="{{ route('logout') }}">Sign out</a>
             </div>
-            {{-- <div class="nav-item text-nowrap">
-                <span class="navbar-toggler-icon"></span>
-            </div> --}}
         </div>
     </header>
 

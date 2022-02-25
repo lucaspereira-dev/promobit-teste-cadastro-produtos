@@ -21,7 +21,7 @@ class TagController extends Controller
         $fields = $request->only(array_keys(Tag::$rules));
         Tag::create($fields);
 
-        return $this->index();
+        return redirect()->route('tags');
     }
 
     public function update(Request $request, Tag $tag)
@@ -29,13 +29,13 @@ class TagController extends Controller
         $fields = $request->only(array_keys(Tag::$rules));
         $tag->update($fields);
 
-        return $this->index();
+        return redirect()->route('tags');
     }
 
     public function purge(Tag $tag)
     {
         ProductTag::where(['tag_id' => $tag->id])->delete();
         $tag->delete();
-        return $this->index();
+        return redirect()->route('tags');
     }
 }

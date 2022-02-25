@@ -5,35 +5,6 @@
 @endsection
 @section('scriptHead')
     @parent
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            $(document).ready(function() {
-                // Activate tooltip
-                $(function() {
-                    $('[data-toggle="tooltip"]').tooltip()
-                })
-            });
-
-            var checkbox = $('table tbody input[type="checkbox"]');
-            $("#selectAll").click(function() {
-                if (this.checked) {
-                    checkbox.each(function() {
-                        this.checked = true;
-                    });
-                } else {
-                    checkbox.each(function() {
-                        this.checked = false;
-                    });
-                }
-            });
-
-            checkbox.click(function() {
-                if (!this.checked) {
-                    $("#selectAll").prop("checked", false);
-                }
-            });
-        });
-    </script>
 @endsection
 @section('bodyAfterAuth')
     <main class="col-md-9 ms-sm-auto col-lg-10">
@@ -51,9 +22,6 @@
                                         <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
                                             data-bs-target="#formProduct" data-bs-whatever="@mdo">Adicionar produto</button>
                                     </td>
-                                    <td> <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#purgeProduct" data-bs-whatever="@mdo">Excluir</button>
-                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -62,12 +30,6 @@
                 <table class="table table-striped table-hover" id="table-itens">
                     <thead>
                         <tr>
-                            <th>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="selectAll">
-                                    <label for="selectAll"></label>
-                                </span>
-                            </th>
                             <th scope="col">Name</th>
                             <th scope="col">Tags</th>
                             <th scope="col">Update</th>
@@ -77,12 +39,6 @@
                     <tbody>
                         @foreach ($products as $key => $product)
                             <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox{{ $key }}" name="options[]" value="1">
-                                        <label for="checkbox{{ $key }}"></label>
-                                    </span>
-                                </td>
                                 <td>{{ $product['name'] }}</td>
                                 <td>{{ implode(array_values($product['tags']), ', ') }}</td>
                                 <td>{{ $product['updated_at'] }}</td>
@@ -102,18 +58,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="clearfix">
-                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                    <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                    </ul>
-                </div>
             </div>
 
         </div>
@@ -179,9 +123,23 @@
 @section('scriptFooter')
     @parent
     <script type="text/javascript">
-        // $(document).ready(function() {
-        //     $('#table-itens').DataTable();
-        // });
+        $(document).ready(function() {
+            $('#table-itens').DataTable({
+                "columns": [{
+                        "width": "30%"
+                    },
+                    {
+                        "width": "40%"
+                    },
+                    {
+                        "width": "20%"
+                    },
+                    {
+                        "width": "10%"
+                    }
+                ]
+            });
+        });
 
         $(document).ready(function() {
 
