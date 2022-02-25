@@ -17,4 +17,15 @@ class Tag extends Model
     protected $fillable = [
         'name',
     ];
+
+    public static $rules = [
+        'name' => 'required|max:50'
+    ];
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nome da tag é requerido',
+        ];
+    }
 }
