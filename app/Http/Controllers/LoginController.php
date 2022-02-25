@@ -27,6 +27,8 @@ class LoginController extends Controller
             // Authentication passed...
             return redirect()->intended('products');
         }
+
+        return redirect()->route('login');
     }
 
 

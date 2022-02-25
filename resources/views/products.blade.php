@@ -20,7 +20,7 @@
                                 <tr>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#formProduct" data-bs-whatever="@mdo">Adicionar produto</button>
+                                            data-bs-target="#formProduct" data-bs-whatever="@mdo">New product</button>
                                     </td>
                                 </tr>
                             </table>
@@ -68,13 +68,13 @@
                 <form id="form-product" action="{{ url('products') }}" method="POST">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="formProductLabel">Novo produto</h5>
+                            <h5 class="modal-title" id="formProductLabel">New product</h5>
 
                         </div>
                         <div class="modal-body">
 
                             <div class="mb-3">
-                                <label for="form-product-input-name" class="col-form-label">Nome</label>
+                                <label for="form-product-input-name" class="col-form-label">Name</label>
                                 <input type="text" class="form-control" id="form-product-input-name" name="name">
                             </div>
                             <div class="mb-3">
@@ -89,8 +89,8 @@
 
                         </div>
                         <div class="modal-footer" id="form-product-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Save</button>
                         </div>
                     </div>
                     @csrf
@@ -102,16 +102,16 @@
                 <form id="form-product-purge" action="{{ url('products') }}" method="POST">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="formProductLabel">Deseja executar ação?</h5>
+                            <h5 class="modal-title" id="formProductLabel">Do you confirm this action?</h5>
 
                         </div>
                         <div class="modal-body">
-                            Predente excluir este item?
+                            Do you want to delete this item?
                             <input name="_method" type="hidden" value="delete">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger">Excluir</button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Purge</button>
                         </div>
                     </div>
                     @csrf
